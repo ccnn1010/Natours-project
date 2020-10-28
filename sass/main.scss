@@ -1,14 +1,13 @@
 
 
 /* reset the css using a universal selector which applys to all elements on the page. border-box changes the box width and height */
-
-
 $color-primary:#55c57a;
 $color-primary-light:#7ed56f;
 $color-primary-dark:#28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 *,
 *::after,
@@ -49,61 +48,69 @@ body {
     background-position: top;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+    &__logo-box{
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+     &__logo {
+        height: 3.5rem;
+    }
+    
+     &__text-box {
+        position: absolute;
+        text-align: center;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 /* The clip path enables the image to become a polygon shape */
 /*  (x y, x y, x y, x y)*/
 /* use percentage if you have used vh height */
 /* For different shapes you can use code from https://bennettfeely.com/clippy/ */
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
 
-.header__logo {
-    height: 3.5rem;
-}
 
-.header__text-box {
-    position: absolute;
-    text-align: center;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 .heading-primary{
     color:$color-white;
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 6rem;
+
+   &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    
+    }
+
+   &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.7rem;
+        animation: moveInRight 1s ease-out;
+    }
 }
+
 
 /* backface-visibility - determines if elements are visualised it helps to eliminate the shaking that occurs in animation. */
 
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
 
-}
 
 /* animation properties: */
 /* animation-iteration-count: 3; */
     /* animation-delay: 3s; */
 
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.7rem;
-    animation: moveInRight 1s ease-out;
-}
+
 /* If your right animation it automatically applies animation-name
 animation-duration
 animation-timing-function */
@@ -156,68 +163,72 @@ animation-timing-function */
 
 /* command d to select more than one element at a time */
 
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 10rem;
-    transition: all .2s;
-    font-size: 1.6rem;
-    position: relative;
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        font-size: 1.6rem;
+        position: relative;
 
 }
 /* :link is a state of the button selector it is a pseudo class which styles special classes. link and visited can be the smae line if the style is the same.*/
 
 /* You need to change it to inline block as automitically it will be inline which will put inline with the other text. If you want to give it padding and width you need to put it as inline-block*/
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
-}
+   &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,0.2);
+    
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    
+    /* scale increases the size 2 is double.*/
+    }
 
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
-}
+   &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,0.2);
+    }
 
 /* To move an item up use Y (top to bottom) and a negative value. In this case the button moves up. RGBA is needed for transparencyS*/
 
-.btn--white {
-    background-color:$color-white;
-    color: $color-grey-dark;
-}
+    &--white {
+        background-color:$color-white;
+        color: $color-grey-dark;
 
-.btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;    
-}
+        &::after{
+            background-color:$color-white;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;    
+    }
 
 /* When using after pseudo element you need the content and display essential! z-index defines the posiiton of the elements when they are one on top of the other.*/
 
-.btn--white::after{
-    background-color:$color-white;
-}
+   
 
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-
-/* scale increases the size 2 is double.*/
-
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
-}
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards;
+    }
 
 /* animation: animation name, duration, timting then delay. 
  .75s is the animation delay.  Fill mode will apply so that it starts backwards when the animation starts.*/
+}
