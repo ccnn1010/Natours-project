@@ -1,0 +1,24 @@
+
+/* reset the css using a universal selector which applys to all elements on the page. border-box changes the box width and height */
+
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    //this defines what 1rem is
+    font-size: 62.54%;
+}
+
+/* 100% would be 16px default root font size. divide 10/16 to find out the percetage to make it 10px not 16px. */
+/* if the default font-size is 10px this means that 1 rem is 10px */
+
+/* The font should be in the body not the universal */
+body {
+    box-sizing: border-box;
+}

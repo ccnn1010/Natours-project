@@ -1,0 +1,70 @@
+
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        font-size: 1.6rem;
+        position: relative;
+
+}
+/* :link is a state of the button selector it is a pseudo class which styles special classes. link and visited can be the smae line if the style is the same.*/
+
+/* You need to change it to inline block as automitically it will be inline which will put inline with the other text. If you want to give it padding and width you need to put it as inline-block*/
+   &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,0.2);
+    
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    
+    /* scale increases the size 2 is double.*/
+    }
+
+   &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,0.2);
+    }
+
+/* To move an item up use Y (top to bottom) and a negative value. In this case the button moves up. RGBA is needed for transparencyS*/
+
+    &--white {
+        background-color:$color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color:$color-white;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;    
+    }
+
+/* When using after pseudo element you need the content and display essential! z-index defines the posiiton of the elements when they are one on top of the other.*/
+
+   
+
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards;
+    }
+
+/* animation: animation name, duration, timting then delay. 
+ .75s is the animation delay.  Fill mode will apply so that it starts backwards when the animation starts.*/
+}
