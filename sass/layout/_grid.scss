@@ -1,6 +1,6 @@
 .row {
     max-width: $grid-width;
-    background-color:#eee;
+ /*    background-color:#eee; */
     margin: 0 auto;
   /*   margin-bottom: $gutter-vertical; */
 /*   to center block elements inside of another block element use   margin: 0 auto; */
@@ -15,7 +15,7 @@
 
     [class^="col-"]{
 
-        background-color: orangered;
+  /*       background-color: orangered; */
         float: left;
         
 
