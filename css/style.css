@@ -1,76 +1,3 @@
-/* reset the css using a universal selector which applys to all elements on the page. border-box changes the box width and height */
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
-
-html {
-  font-size: 62.54%; }
-
-/* 100% would be 16px default root font size. divide 10/16 to find out the percetage to make it 10px not 16px. */
-/* if the default font-size is 10px this means that 1 rem is 10px */
-/* The font should be in the body not the universal */
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /*  font-size: 16px; */
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  /* puts padding around the webpage body */
-  box-sizing: border-box; }
-
-/* view of image is 95% of screen the position top makes sure it has the overspill on the bottom. */
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    text-align: center;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-
-/* The clip path enables the image to become a polygon shape */
-/*  (x y, x y, x y, x y)*/
-/* use percentage if you have used vh height */
-/* For different shapes you can use code from https://bennettfeely.com/clippy/ */
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out; }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.7rem;
-    animation: moveInRight 1s ease-out; }
-
-/* backface-visibility - determines if elements are visualised it helps to eliminate the shaking that occurs in animation. */
-/* animation properties: */
-/* animation-iteration-count: 3; */
-/* animation-delay: 3s; */
 /* If your right animation it automatically applies animation-name
 animation-duration
 animation-timing-function */
@@ -102,7 +29,75 @@ animation-timing-function */
     opacity: 1;
     transform: translate(0); } }
 
+/* reset the css using a universal selector which applys to all elements on the page. border-box changes the box width and height */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.54%; }
+
+/* 100% would be 16px default root font size. divide 10/16 to find out the percetage to make it 10px not 16px. */
+/* if the default font-size is 10px this means that 1 rem is 10px */
+/* The font should be in the body not the universal */
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*  font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  /* puts padding around the webpage body */ }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 1s ease-out; }
+
+/* backface-visibility - determines if elements are visualised it helps to eliminate the shaking that occurs in animation. */
+/* animation properties: */
+/* animation-iteration-count: 3; */
+/* animation-delay: 3s; */
 /* command d to select more than one element at a time */
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all .2s;
+  letter-spacing: 2px;
+  margin-top: 100px; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skew(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.u-center-text {
+  text-align: center; }
+
 .btn {
   /* :link is a state of the button selector it is a pseudo class which styles special classes. link and visited can be the smae line if the style is the same.*/
   /* You need to change it to inline block as automitically it will be inline which will put inline with the other text. If you want to give it padding and width you need to put it as inline-block*/
@@ -148,3 +143,63 @@ animation-timing-function */
   .btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards; }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto;
+  /*   margin-bottom: $gutter-vertical; */
+  /*   to center block elements inside of another block element use   margin: 0 auto; */ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+/* view of image is 95% of screen the position top makes sure it has the overspill on the bottom. */
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+/* The clip path enables the image to become a polygon shape */
+/*  (x y, x y, x y, x y)*/
+/* use percentage if you have used vh height */
+/* For different shapes you can use code from https://bennettfeely.com/clippy/ */
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -28vh; }

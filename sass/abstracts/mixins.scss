@@ -1,0 +1,11 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+//display table is standard
+//clear both cancels both float left and right
