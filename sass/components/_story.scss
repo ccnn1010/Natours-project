@@ -9,6 +9,7 @@
     font-size: $default-font-size;
     transform: skewX(-12deg);
     cursor: pointer;
+    
 
 
         &__shape {
@@ -22,6 +23,7 @@
             clip-path: circle(50% at 50% 50%);
             -webkit-clip-path: circle(50% at 50% 50%);
             transform: translateX(-3rem) skewX(12deg);
+            overflow: hidden;
          
         }//this is to make the text float around the element
 
@@ -29,6 +31,7 @@
             height: 100%;
             transform: translateX(-4rem) scale(1.4);
             transition: all .5s;
+           
             
            /*  backface-visibility: hidden; */
         }
@@ -55,14 +58,12 @@
         &:hover &__caption {
             opacity: 1;
             transform: translate(-50%, -50%);
-            backface-visibility: hidden; 
+           /*  backface-visibility: hidden;  */
         }
 
         &:hover &__img{
             transform: translateX(-4rem) scale(1);
             filter: blur(3px) brightness(80%);
-            
-
         }
 
     }
