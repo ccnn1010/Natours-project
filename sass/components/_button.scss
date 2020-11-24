@@ -1,5 +1,6 @@
 
 .btn {
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -10,6 +11,10 @@
         transition: all .2s;
         font-size: $default-font-size;
         position: relative;
+
+        //change for the <button> element
+        border: none;
+        cursor: pointer;
 
 }
 /* :link is a state of the button selector it is a pseudo class which styles special classes. link and visited can be the smae line if the style is the same.*/
@@ -27,9 +32,11 @@
     /* scale increases the size 2 is double.*/
     }
 
-   &:active {
+   &:active,
+   &:focus {
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black,0.2);
+        outline: none;
     }
 
 /* To move an item up use Y (top to bottom) and a negative value. In this case the button moves up. RGBA is needed for transparencyS*/

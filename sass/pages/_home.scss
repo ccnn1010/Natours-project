@@ -53,15 +53,16 @@
                                 rgba($color-white, .9) 50%,
                                 transparent 50%),
                                 url(../img/nat-10.jpg);
-    background-size: 100%; //you can use 100% or cover
+    background-size: cover; //you can use 100% or cover
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
 
-    height: 50rem;
+    height: 53rem;
 
     &__form {
         width: 50%;
         padding: 6rem;
     }
 }
+
 
