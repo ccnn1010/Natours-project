@@ -13,8 +13,26 @@
 
 html {
     //this defines what 1rem is
-    font-size: 62.54%;
+    font-size: 62.54%;//1rem = 10px; 10px/16px(default) = 62.5%
+
+    @include respond(tab-land) {
+        font-size: 56.25%;
+    }//1rem = 9px, 9/16 = 56.25%
+    //width < 1200?
+
+    @include respond(tab-port) {
+        font-size: 50%;
+    }//1rem = 8px, 8/16 = 50%
+     //width < 900?
+
+
+    @include respond(big-desktop) {
+        font-size: 75%;
+    }//1rem = 12px, 12/16 = 75%
+
 }
+
+//always larger media queries before smaller for a desktop first.  For mobile first smaller starts before larger.
 
 /* 100% would be 16px default root font size. divide 10/16 to find out the percetage to make it 10px not 16px. */
 /* if the default font-size is 10px this means that 1 rem is 10px */
@@ -22,4 +40,10 @@ html {
 /* The font should be in the body not the universal */
 body {
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }//get rid of padding from 900px...
 }
+

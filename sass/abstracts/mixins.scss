@@ -17,3 +17,48 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+
+
+//MEDIA QUERY MANAGAER
+//This is for a desktop first approach
+
+/*
+0-600px:        Phone
+600-900px       Tablet Portrait
+900-1200px      Tablet landscape
+[1200 - 1000] is where the normal styles apply
+1800px +         Big desktop
+*/
+
+//breakpoint arugument choices more efficient use of mixins
+//phone
+//tab-port (portrait)
+//tab-land (landscape)
+//big-desktop
+
+//ORDER = base + typography > general layout + grid > pafe layout > components
+
+//1em = 16px  
+//em's/rems are not affected by root font setting 
+//em's are used here as rems don't work as well for media queries
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) { @content };
+    }//600px/16 = 37.5em
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) { @content };
+    }//900/16
+
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) { @content };
+    }//1200px/16
+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) { @content };
+    }//1800px/16
+}
+
+
+//if directive is advanced programming in css it masks a tasks and if the result is true something happens...
