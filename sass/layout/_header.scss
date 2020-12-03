@@ -2,7 +2,7 @@
 
 /* view of image is 95% of screen the position top makes sure it has the overspill on the bottom. */
 .header {
-    height: 95vh;
+    height: 85vh;
     background-image:linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
@@ -14,17 +14,26 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
 
-    @media (min-resolution: 192dpi) and (min-width: 37.5em)//600px/16 = 37.5
+    //doesnt matter what value goes into the polygon brackets.
+
+
+    @media (min-resolution: 192dpi) and (min-width: 37.5em),
+        (-webkit-min-device-pixel-rate: 2) and (min-width: 37.5em)//600px/16 = 37.5
         , (min-width: 125em) {
         background-image:linear-gradient(
             to right bottom,
-            rgba($color-secondary-light, 0.8),
-            rgba($color-secondary-dark, 0.8)), 
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)), 
         url(../img/hero.jpg);
     }//this is how to change for screens with higher than 192dpi (2x) screen and whenever the width is below 600px
 
-
+//-webkit-min-device-pixel-rate: 2 this is needed to work on safari
     @include respond(tab-land) {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 92%);
         clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 92%);
