@@ -47,3 +47,9 @@ body {
     }//get rid of padding from 900px...
 }
 
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
+//when the user selects text it is a personal style in this case green

@@ -175,8 +175,11 @@
 
 
     //MEDIA QUERY
-
-    @include respond(tab-port) {
+    @media only screen and (max-width: 56.25em),
+        only screen and (hover:none) {
+            //opposite of hover:none is hover:hover
+            //use this to enable the code to show any thing that cannot be hovered on touch devices
+    //@include respond(tab-port) {
     height: auto;
     border-radius: 3px;
     background-color: $color-white;
